@@ -52,6 +52,7 @@ public class Window {
         
         GLFW.glfwMakeContextCurrent(window);
         GL.createCapabilities();
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
         
         GLFWVidMode videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
         GLFW.glfwSetWindowPos(getWindow(), (videoMode.width() - getWidth()) / 2, (videoMode.height() - getHeight()) / 2);

@@ -7,13 +7,14 @@ package shaders;
 
 import org.joml.Matrix4f;
 
+
+
 /**
  *
  * @author Domen Brunček
  */
 public class StaticShader extends Shader {
     private static final String VERTEX_FILE = "./src/shaders/vertexShader.vs", FRAGMENT_FILE = "./src/shaders/fragmentShader.fs";
-    
     
     
     private int tvpMatrixLocation;
@@ -33,15 +34,12 @@ public class StaticShader extends Shader {
     @Override
     protected void getAllUniforms() {
          tvpMatrixLocation = super.getUniform("tvpMatrix");
-         //locationProjectionMatrix = super.getUniform("projection");
+         //projectionMatrixLocation = super.getUniform("projection");
     }
     
     public void useMatrices() {
-        System.out.println("projekcijska matrika je: \n" + projectionMatrix);
-        System.out.println("transformacijska matrika je: \n" + transformationMatrix);
-        super.loadMatrixUniform(tvpMatrixLocation, transformationMatrix);
-        System.out.println("projekcijska matrika po multiplikaciji je: \n" + projectionMatrix);
-        System.out.println("transformacijska matrika po multiplikaciji je: \n" + transformationMatrix);
+        super.loadMatrixUniform(tvpMatrixLocation, projectionMatrix.mul(transformationMatrix));
+        
         
     }
     

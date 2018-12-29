@@ -6,7 +6,6 @@ import engine.io.Window;
 import engine.render.Renderer;
 import engine.render.models.ModelEntitiy;
 import engine.render.models.TexturedModel;
-import org.lwjgl.glfw.GLFW;
 import shaders.StaticShader;
 
 public class SuperMalario {
@@ -17,7 +16,7 @@ public class SuperMalario {
     
     public static void main(String[] args) {
         window.create();
-        window.setBackgroundColor(0.0f, 0.0f, 0.0f);
+        window.setBackgroundColor(0.2f, 0.2f, 0.0f);
         shader.create();
         renderer.create();
         
@@ -37,7 +36,11 @@ public class SuperMalario {
             2, 3, 0
         }, "beautiful.png");
         // (0,0,0) za pravilno delovanje brez unga
-        ModelEntitiy entity = new ModelEntitiy(model, new Vec3f(0, 0, 0), new Vec3f(0,0,0), new Vec3f(1,1,1));
+        ModelEntitiy entity = new ModelEntitiy(model,
+                new Vec3f(0, 0, -10),
+                new Vec3f(0,0,0),
+                new Vec3f(1,1,1));
+        
         while (!window.closed()) {
             if (window.isUpdating()) {
                 window.update();

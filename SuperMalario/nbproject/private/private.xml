@@ -3,20 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/io/Window.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/Material.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/Renderer.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/shaders/fragmentShader.fs</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/shaders/vertexShader.vs</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/shaders/Shader.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/supermalario/SuperMalario.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/models/Model.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/math/MatrixMaths.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/models/UntexturedModel.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/models/RewrittenModel.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/models/ModelEntitiy.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/engine/render/models/TexturedModel.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/FRI/3%20semester/RG/Seminarska/SuperMalario/src/shaders/StaticShader.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/supermalario2/SuperMalario2.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/OBJLoader.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/StaticShader.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/toolbox/Maths.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Renderer.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Generator.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/ShaderProgram.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Window.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/entities/Light.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,14 +5,17 @@
  */
 package supermalario2;
 
+import Models.ModelData;
 import org.lwjgl.glfw.GLFW;
 import renderEngine.Loader;
 import Models.RawModel;
 import Models.TexturedModel;
 import entities.Camera;
 import entities.Entity;
+import entities.Light;
 import org.lwjglx.util.vector.Vector3f;
 import renderEngine.Generator;
+import renderEngine.OBJFileLoader;
 import renderEngine.OBJLoader;
 import renderEngine.Renderer;
 import renderEngine.Window;
@@ -33,11 +36,12 @@ public class SuperMalario2 {
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(window, shader);
         
-        //RawModel model = Generator.generateCube();
-        RawModel model = OBJLoader.loadObjModel("stall", loader);
+        ModelData data = OBJFileLoader.loadOBJ("stall");
+        RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
         TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("stallTexture")));
         
-        Entity entity = new Entity(staticModel, new Vector3f(0, 0, -5), 0, 0, 0, 0.2f);
+        Entity entity = new Entity(staticModel, new Vector3f(0, 0, -25), 0, 0, 0, 1f);
+        Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1,1,1));
         Camera camera = new Camera(window);
         
         Entity entitiy2 = Generator.generateKvadrat();
@@ -52,6 +56,7 @@ public class SuperMalario2 {
             
             
             shader.start();
+            shader.loadLight(light);
             shader.loadViewMatrix(camera);
             renderer.render(entity, shader);
             renderer.render(entitiy2, shader);

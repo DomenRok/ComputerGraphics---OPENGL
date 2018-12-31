@@ -13,6 +13,7 @@ import org.lwjglx.util.vector.Vector3f;
 
 
 public class OBJLoader {
+        // DEPRECATED
 
 	public static RawModel loadObjModel(String fileName, Loader loader) {
 		FileReader fr = null;
@@ -90,8 +91,7 @@ public class OBJLoader {
 		for(int i=0;i<indices.size();i++){
 			indicesArray[i] = indices.get(i);
 		}
-		return loader.loadToVAO(verticesArray, textureArray, indicesArray);
-
+		return loader.loadToVAO(verticesArray, textureArray, normalsArray, indicesArray);
 	}
 
 	private static void processVertex(String[] vertexData, List<Integer> indices,

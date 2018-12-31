@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package renderEngine;
+package renderEngine.io;
 
 import java.nio.DoubleBuffer;
 import org.lwjgl.BufferUtils;

@@ -7,7 +7,7 @@ package entities;
 
 import org.lwjgl.glfw.GLFW;
 import org.lwjglx.util.vector.Vector3f;
-import renderEngine.Window;
+import renderEngine.io.Window;
 
 /**
  *

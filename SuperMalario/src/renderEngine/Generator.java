@@ -5,6 +5,7 @@
  */
 package renderEngine;
 
+import Models.ModelData;
 import Models.RawModel;
 import Models.TexturedModel;
 import entities.Entity;
@@ -131,6 +132,14 @@ public class Generator {
         TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("bob")));
         
         Entity entity = new Entity(staticModel, new Vector3f(-2, 0, -1), 0, 0, 0, 1);
+        return entity;
+    }
+    
+    public static Entity generateObject(String objModel, String textureFile, Loader loader, Vector3f position, float scale) {
+        ModelData data =  OBJFileLoader.loadOBJ(objModel);
+        RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
+        TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture(textureFile)));
+        Entity entity = new Entity(staticModel, position , 0, 0, 0, scale);
         return entity;
     }
     

@@ -16,9 +16,8 @@ import entities.Light;
 import org.lwjglx.util.vector.Vector3f;
 import renderEngine.Generator;
 import renderEngine.OBJFileLoader;
-import renderEngine.OBJLoader;
 import renderEngine.Renderer;
-import renderEngine.Window;
+import renderEngine.io.Window;
 import shaders.StaticShader;
 import textures.ModelTexture;
 
@@ -35,29 +34,31 @@ public class SuperMalario2 {
         Loader loader = new Loader();
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(window, shader);
-        
-        ModelData data = OBJFileLoader.loadOBJ("stall");
+         
+        ModelData data = OBJFileLoader.loadOBJ("dragon");
         RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
-        TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("stallTexture")));
+        TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("white")));
+        ModelTexture texture = staticModel.getTexture();
+        texture.setShineDamper(10);
+        texture.setReflectivity(1);
         
-        Entity entity = new Entity(staticModel, new Vector3f(0, 0, -25), 0, 0, 0, 1f);
+        
+        Entity entity = new Entity(staticModel, new Vector3f(0, 0, -30), 0, 0, 0, 1f);
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1,1,1));
         Camera camera = new Camera(window);
         
-        Entity entitiy2 = Generator.generateKvadrat();
+        Entity entitiy2 = Generator.generateObject("houseA", "houseTexture", loader, new Vector3f(-10, 2, -25), 0.05f);
         
         while (!window.closed()) {
-            
-            
-            entity.increaseRotation(0.01f, 0.03f, 0.0f);
-            entitiy2.increaseRotation(0.045f, 0.03f, 0.0f);
+            entity.increaseRotation(0.01f, 0.03f, 0.5f);
+            entitiy2.increaseRotation(0.0f, 0.05f, 0);
             camera.move();
             renderer.preapare();
             
             
             shader.start();
             shader.loadLight(light);
-            shader.loadViewMatrix(camera);
+            shader.loadViewMatrix(camera); 
             renderer.render(entity, shader);
             renderer.render(entitiy2, shader);
             shader.stop();

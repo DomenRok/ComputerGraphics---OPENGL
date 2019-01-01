@@ -29,6 +29,12 @@ public class Camera {
         if (window.isKeyDown(GLFW.GLFW_KEY_S)) position.z += 0.02f;
         if (window.isKeyDown(GLFW.GLFW_KEY_A)) position.x -= 0.02f;
         if (window.isKeyDown(GLFW.GLFW_KEY_D)) position.x += 0.02f;
+        if (window.isKeyDown(GLFW.GLFW_KEY_DOWN)) position.y -= 0.02f;
+        if (window.isKeyDown(GLFW.GLFW_KEY_UP)) position.y += 0.02f;
+        if (window.isKeyDown(GLFW.GLFW_KEY_J)) pitch += 0.3f;
+        if (window.isKeyDown(GLFW.GLFW_KEY_K)) yaw += 0.3f;
+        if (window.isKeyDown(GLFW.GLFW_KEY_L)) roll += 0.3f;
+        
     }
     
     

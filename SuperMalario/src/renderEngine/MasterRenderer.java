@@ -9,6 +9,7 @@ import Models.TexturedModel;
 import entities.Camera;
 import entities.Entity;
 import entities.Light;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,14 @@ public class MasterRenderer {
     
     private StaticShader shader = new StaticShader();
     private Window window;
-    private Renderer renderer = new Renderer(window, shader);
+    private Renderer renderer;
+
+    public MasterRenderer(Window window) {
+        window = window;
+        renderer = new Renderer(window, shader);
+    }
+    
+    
     
     private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
     
@@ -33,9 +41,22 @@ public class MasterRenderer {
         shader.start();
         shader.loadLight(sun);
         shader.loadViewMatrix(camera);
-        
+        renderer.render(entities);
         shader.stop();
         entities.clear();
+    }
+    
+    public void processEntity(Entity entity) {
+        TexturedModel entityModel = entity.getModel();
+        List<Entity> batch = entities.get(entityModel);
+        if (batch!=null) {
+            batch.add(entity);
+        } else {
+            List<Entity> newBatch = new ArrayList<Entity>();
+            newBatch.add(entity);
+            entities.put(entityModel, newBatch);
+            
+        }
     }
     
     public void cleanUp() {

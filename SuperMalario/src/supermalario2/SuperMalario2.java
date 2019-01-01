@@ -39,8 +39,8 @@ public class SuperMalario2 {
         RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
         TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("white")));
         ModelTexture texture = staticModel.getTexture();
-        texture.setShineDamper(10);
-        texture.setReflectivity(1);
+        texture.setShineDamper(100);
+        texture.setReflectivity(10);
         
         
         Entity entity = new Entity(staticModel, new Vector3f(0, 0, -30), 0, 0, 0, 1f);

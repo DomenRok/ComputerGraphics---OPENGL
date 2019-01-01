@@ -139,6 +139,9 @@ public class Generator {
         ModelData data =  OBJFileLoader.loadOBJ(objModel);
         RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
         TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture(textureFile)));
+        ModelTexture texture = staticModel.getTexture();
+        //texture.setReflectivity(0.5f);
+        //texture.setShineDamper(10);
         Entity entity = new Entity(staticModel, position , 0, 0, 0, scale);
         return entity;
     }

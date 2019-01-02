@@ -10,17 +10,23 @@
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/Models/ModelData.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Vertex.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/entities/Camera.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Renderer.java</file>
-            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Generator.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/TerrainRenderer.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/Loader.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/OBJFileLoader.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/entities/Light.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/terrains/Terrain.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/EntityRenderer.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/entities/Player.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/TerrainShader.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/renderEngine/MasterRenderer.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/fragmentShader.txt</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/vertexShader.txt</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/toolbox/Maths.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/ShaderProgram.java</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/textures/ModelTexture.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/shaders/terrainVertexShader.txt</file>
             <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/entities/Entity.java</file>
+            <file>file:/C:/Users/Domen%20Brunček/Desktop/Malario_REMAKE/SuperMalario2/src/toolbox/Generator.java</file>
         </group>
     </open-files>
 </project-private>

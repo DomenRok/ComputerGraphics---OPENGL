@@ -12,6 +12,7 @@ import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
+import org.lwjglx.Sys;
 
 /**
  *
@@ -23,6 +24,10 @@ public class Window {
     private long window;
     private boolean[] keys = new boolean[GLFW.GLFW_KEY_LAST];
     private boolean[] mouseButtons = new boolean[GLFW.GLFW_MOUSE_BUTTON_LAST];
+    private static final int FPS_CAPS = 120;
+    
+    private static double lastFrameTime;
+    private static double deltaTime;
     
     
     public Window(int width, int height, String title) {
@@ -48,7 +53,6 @@ public class Window {
         
         GLFW.glfwMakeContextCurrent(getWindow());
         GL.createCapabilities();
-        //GL11.glEnable(GL11.GL_DEPTH_TEST); // Unnecesary za zdej
         
         
         GLFWVidMode videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
@@ -60,10 +64,7 @@ public class Window {
 			if ( key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_PRESS )
 				GLFW.glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
         });
-        
-        
-        
-        
+        lastFrameTime = getCurrentTime();
     }
     
     public boolean closed() {
@@ -71,9 +72,16 @@ public class Window {
     }
     
     public void update() {
+        GLFW.glfwPollEvents();
+        double currentFrameTime = getCurrentTime();
+        deltaTime = (currentFrameTime - lastFrameTime);
+        lastFrameTime = currentFrameTime;
         for (int i=0; i < GLFW.GLFW_KEY_LAST; i++) keys[i] = isKeyDown(i);
         for (int i=0; i < GLFW.GLFW_MOUSE_BUTTON_LAST; i++) mouseButtons[i] = isMouseDown(i);
-        GLFW.glfwPollEvents();
+    }
+    
+    public double getFrameTimeSeconds() {
+        return deltaTime;
     }
     
     public void swapBuffers() {
@@ -96,6 +104,10 @@ public class Window {
      */
     public int getHeight() {
         return height;
+    }
+    
+    private static double getCurrentTime() {
+        return GLFW.glfwGetTime();
     }
     
     

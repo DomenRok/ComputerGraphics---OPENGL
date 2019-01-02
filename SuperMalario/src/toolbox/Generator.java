@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package renderEngine;
+package toolbox;
 
 import Models.ModelData;
 import Models.RawModel;
@@ -11,6 +11,8 @@ import Models.TexturedModel;
 import entities.Entity;
 import org.lwjglx.util.vector.Vector3f;
 import renderEngine.Loader;
+import renderEngine.Loader;
+import renderEngine.OBJFileLoader;
 import textures.ModelTexture;
 
 /**

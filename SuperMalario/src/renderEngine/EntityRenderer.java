@@ -24,24 +24,17 @@ import toolbox.Maths;
  *
  * @author Domen Brunček
  */
-public class Renderer {
+public class EntityRenderer {
     
-    private static final float FOV = 70;
-    private static final float NEAR_PLANE = 0.01f;
-    private static final float FAR_PLANE = 1000;
     Window window;
     
     
-    private Matrix4f projectionMatrix;
     private StaticShader shader;
     
     
-    public Renderer( Window window, StaticShader shader) {
-        GL11.glEnable(GL11.GL_CULL_FACE);
-        GL11.glCullFace(GL11.GL_BACK);
+    public EntityRenderer( Window window, StaticShader shader, Matrix4f projectionMatrix) {
         this.window = window;
         this.shader = shader;
-        createProjectionMatrix();
         shader.start();
         shader.loadProjectionMatrix(projectionMatrix);
         shader.stop();
@@ -50,11 +43,7 @@ public class Renderer {
     
     
     
-    public void preapare() {
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-        GL11.glClearColor(0, 0, 0, 1);
-    }
+
     
     public void render(Map<TexturedModel, List<Entity>> entities) {
         for(TexturedModel model:entities.keySet()) {
@@ -79,7 +68,6 @@ public class Renderer {
         shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, model.getTexture().getID());
-        
     }
     
     private void unbindTexturedModel() {
@@ -118,18 +106,5 @@ public class Renderer {
         
     }
     
-    private void createProjectionMatrix(){
-        float aspectRatio = (float) window.getWidth() / (float) window.getHeight();
-        float y_scale = (float) ((1f / Math.tan(Math.toRadians(FOV / 2f))) * aspectRatio);
-        float x_scale = y_scale / aspectRatio;
-        float frustum_length = FAR_PLANE - NEAR_PLANE;
- 
-        projectionMatrix = new Matrix4f();
-        projectionMatrix.m00 = x_scale;
-        projectionMatrix.m11 = y_scale;
-        projectionMatrix.m22 = -((FAR_PLANE + NEAR_PLANE) / frustum_length);
-        projectionMatrix.m23 = -1;
-        projectionMatrix.m32 = -((2 * NEAR_PLANE * FAR_PLANE) / frustum_length);
-        projectionMatrix.m33 = 0;
-    }
+    
 }

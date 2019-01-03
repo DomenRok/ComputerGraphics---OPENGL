@@ -14,8 +14,8 @@ import textures.ModelTexture;
  * @author Domen Brunček
  */
 public class Terrain {
-    private static final float SIZE = 800;
-    private static final int VERTEX_COUNT = 128;
+    private static final float SIZE = 180;
+    private static final int VERTEX_COUNT = 512;
     
     private float x;
     private float z;

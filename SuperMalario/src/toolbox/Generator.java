@@ -8,11 +8,15 @@ package toolbox;
 import Models.ModelData;
 import Models.RawModel;
 import Models.TexturedModel;
+import entities.Enemy;
 import entities.Entity;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import org.lwjglx.util.vector.Vector3f;
 import renderEngine.Loader;
-import renderEngine.Loader;
 import renderEngine.OBJFileLoader;
+import renderEngine.io.Window;
 import textures.ModelTexture;
 
 /**
@@ -20,6 +24,13 @@ import textures.ModelTexture;
  * @author Domen Brunček
  */
 public class Generator {
+    private Window window;
+
+    public Generator(Window window) {
+        this.window = window;
+    }
+    
+    
     public static RawModel generateCube() {
         Loader loader = new Loader();
         float[] vertices = {            
@@ -148,5 +159,33 @@ public class Generator {
         return entity;
     }
     
+    public static Enemy generateEnemy(Window window, String objModel, String textureFile, Loader loader, Vector3f position, float scale, float hitBox) {
+        ModelData data =  OBJFileLoader.loadOBJ(objModel);
+        RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
+        TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture(textureFile)));
+        ModelTexture texture = staticModel.getTexture();
+        texture.setReflectivity(1.5f);
+        texture.setShineDamper(10);
+        
+        Enemy enemy = new Enemy(window, staticModel, position , 0, 0, 0, scale);
+        enemy.setHitBox(hitBox);
+        return enemy;
+    }
     
+    public List<Enemy> generateWave(Random random) {
+        Loader loader = new Loader();
+        List<Enemy> enemies = new ArrayList<>();
+        for (int i=0; i < 5; i++) {
+            Enemy enemy = toolbox.Generator.generateEnemy(window, "sphere", "bob", loader, new Vector3f(180, (float)Math.random() * 5, i*4), 1f, 1.3f);
+            //Enemy enemy = generateEnemy(window, "sphere", "bob",  loader, new Vector3f(90, (float)(Math.random() * 5), i * 12), x);
+            enemies.add(enemy);
+        }
+        return enemies;
+    }
+    
+    
+    
+   
+    
+   
 }

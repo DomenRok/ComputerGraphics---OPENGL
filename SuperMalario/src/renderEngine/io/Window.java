@@ -5,10 +5,15 @@
  */
 package renderEngine.io;
 
+import entities.Camera;
+import entities.Player;
 import java.nio.DoubleBuffer;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWKeyCallbackI;
+import org.lwjgl.glfw.GLFWScrollCallbackI;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
@@ -29,11 +34,30 @@ public class Window {
     private static double lastFrameTime;
     private static double deltaTime;
     
+    double oldX = 0;
+    double newX = 0;
+    double oldY = 0;
+    double newY = 0;
+    
+
+    private InputManager ioManager = new InputManager();
+    private Camera camera;
+    
     
     public Window(int width, int height, String title) {
         this.width = width;
         this.height = height;
         this.title = title;
+    }
+    
+    public void setX(double x) {
+        oldX = newX - x;
+        newX = x;
+    }
+    
+    public void setY(double y) {
+        oldY = newY - y;
+        newY = y;
     }
     
     public void create() {
@@ -64,8 +88,44 @@ public class Window {
 			if ( key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_PRESS )
 				GLFW.glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
         });
+        
+        
+        GLFW.glfwSetScrollCallback(window, new GLFWScrollCallbackI() {
+            @Override
+            public void invoke(long window, double xoffset, double yoffset) {
+                camera.calculateZoom((float)yoffset*5);
+            }
+        });
+        
+        
+        
+        
+        
+        GLFW.glfwSetCursorPosCallback(window, new GLFWCursorPosCallback() {
+            @Override
+            public void invoke(long window, double xpos, double ypos) {
+                setY(ypos);
+                setX(xpos);
+                if (isMouseDown(GLFW.GLFW_MOUSE_BUTTON_LEFT))  {
+                    camera.calculatePitch((float)oldY);
+                } else if (isMouseDown(GLFW.GLFW_MOUSE_BUTTON_RIGHT))  {
+                    camera.calculateAngleAroundPlayer((float)oldX);
+                }
+            }
+        });
+        
+        
+        
+        
+        
         lastFrameTime = getCurrentTime();
     }
+    
+    public void linkCamera(Camera camera) {
+        this.camera = camera;
+    }
+    
+    
     
     public boolean closed() {
         return GLFW.glfwWindowShouldClose(getWindow());

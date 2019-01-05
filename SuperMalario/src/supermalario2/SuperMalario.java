@@ -76,6 +76,7 @@ public class SuperMalario {
             player.move();
             camera.move();
             tower.increaseRotation(0, 0.1f, 0);
+            misc.increaseRotation(0, 0.1f, 0);
             
             double unluckyCoin = Math.random();
             if (unluckyCoin <= 0.001) generator.addWave(random, enemies);

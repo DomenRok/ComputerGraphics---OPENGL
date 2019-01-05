@@ -20,7 +20,7 @@ public class Player extends Entity {
     private static final float RUN_SPEED = 20;
     private static final float TURN_SPEED = 160;
     private static final float GRAVITY = -50;
-    private static final float JUMP_POWER = 50;
+    private static float JUMP_POWER = 35;
     
     private static final float TERRAIN_HEIGHT = 0;
     
@@ -49,8 +49,7 @@ public class Player extends Entity {
         upwardSpeed += GRAVITY * window.getFrameTimeSeconds();
         super.increasePosition(0, (float) (upwardSpeed * window.getFrameTimeSeconds()), 0);
         
-        if (getPosition().x < 0 || getPosition().x > 180 || getPosition().z < 0 ||  getPosition().z > 90) {
-        } 
+        if ((getPosition().x < 0 || getPosition().x > 180 || getPosition().z < 0 || getPosition().z > 90) && (getPosition().x > -80 || getPosition().x < -120 || getPosition().z < 0 || getPosition().z > 20)) {}
         else if(super.getPosition().y < TERRAIN_HEIGHT) {
             upwardSpeed = 0;
             isInAir = false;
@@ -62,6 +61,7 @@ public class Player extends Entity {
         if (!isInAir) {
             this.upwardSpeed = JUMP_POWER;
             isInAir = true;
+            JUMP_POWER += 1;
         }
     }
     
@@ -74,7 +74,7 @@ public class Player extends Entity {
         else if (window.isKeyDown(GLFW.GLFW_KEY_A)) currentTurnSpeed = TURN_SPEED;
         else currentTurnSpeed = 0;
         
-        if (window.isKeyDown(GLFW.GLFW_KEY_R)) setPosition(0, 0, 0);
+        if (window.isKeyDown(GLFW.GLFW_KEY_R)) setPosition(0, 5, 45);
         
         if (window.isKeyDown(GLFW.GLFW_KEY_SPACE)) jump();   
     }

@@ -14,7 +14,7 @@ import textures.ModelTexture;
  * @author Domen Brunček
  */
 public class Terrain {
-    private static final float SIZE = 180;
+    private float SIZE = 180;
     private static final int VERTEX_COUNT = 512;
     
     private float x;
@@ -22,7 +22,8 @@ public class Terrain {
     private RawModel model;
     private ModelTexture texture;
 
-    public Terrain(int gridX, int gridZ, Loader loader, ModelTexture texture) {
+    public Terrain(int gridX, int gridZ, Loader loader, ModelTexture texture, float size) {
+        SIZE = size;
         this.texture = texture;
         this.x = gridX * SIZE;
         this.z = gridZ * SIZE;

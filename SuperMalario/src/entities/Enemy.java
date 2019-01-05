@@ -24,21 +24,35 @@ public class Enemy extends Entity {
                                      new Vector3f()};
     
     double time = GLFW.glfwGetTime();
-    
+    int style;
     public Enemy(Window window,TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
         super(model, position, rotX, rotY, rotZ, scale);
         this.window = window;
         setHitBox(1.3f);
+        style = 1;
     }
     
     public void move() {
         if (getPosition().x <= 1)  {
-            super.setPosition(90, 3,(float) Math.random() * 40);
-        }  
+            super.setPosition(140 + (float)Math.random() * 40, 3,(float) Math.random() * 40);
+            changeStyle();
+            currentSpeed = (float)Math.random() * 10;
+        }
+        if (getPosition().y < 0) setPosition(getPosition().x, 1, getPosition().z);
         currentSpeed += 0.01f;
-        super.increasePosition(-(float) (currentSpeed * window.getFrameTimeSeconds()), 0, (float) (Math.cos(Math.toRadians(time))));
-        
+        if (style == 0) super.increasePosition(-(float) (currentSpeed * window.getFrameTimeSeconds()), 0, (float) (Math.sin(Math.toRadians(time))));
+        else FlyPattern();
         time += 1;
+    }
+    
+    public void FlyPattern() {
+        super.increasePosition(-(float) (currentSpeed * window.getFrameTimeSeconds()), (float) (Math.sin(Math.toRadians(time*time)))/4, (float) (Math.sin(Math.toRadians(time))));
+    }
+    
+     
+    
+    public void changeStyle() {
+        this.style = style == 0 ? 1:0;
     }
     
     public boolean intersects(Player player) {

@@ -25,6 +25,8 @@ import textures.ModelTexture;
  */
 public class Generator {
     private Window window;
+    
+    private static String[] textures = {"fire", "bob", "grass", "toxic"};
 
     public Generator(Window window) {
         this.window = window;
@@ -164,9 +166,6 @@ public class Generator {
         RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
         TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture(textureFile)));
         ModelTexture texture = staticModel.getTexture();
-        texture.setReflectivity(1.5f);
-        texture.setShineDamper(10);
-        
         Enemy enemy = new Enemy(window, staticModel, position , 0, 0, 0, scale);
         enemy.setHitBox(hitBox);
         return enemy;
@@ -181,6 +180,18 @@ public class Generator {
             enemies.add(enemy);
         }
         return enemies;
+    }
+    
+    public void addWave(Random random, List<Enemy> enemies) {
+        float scaleScalar = 1.3f;
+        int randInt = random.nextInt(3);
+        int randNumb = random.nextInt(10);
+        Loader loader = new Loader();
+        String randomString = textures[(int)random.nextInt(textures.length)];
+        for (int i=0; i < randNumb; i++) {
+            Enemy enemy = toolbox.Generator.generateEnemy(window, "sphere", randomString, loader, new Vector3f(100 + (float)Math.random() * 160, (float)Math.random() * 5 + 1, -40+(float)Math.random() * 75), randInt, randInt * scaleScalar);
+            enemies.add(enemy);
+        }
     }
     
     
